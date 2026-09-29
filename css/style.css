@@ -1186,3 +1186,106 @@ ajuste por foto quando necessário. */
     object-fit: cover;
   }
 }
+
+/* 13. FOTOS REAIS — enquadramentos individuais, sem alterar os arquivos originais. */
+.hero-slideshow .hero-tasting {
+  object-position: 50% 22%;
+}
+.hero-slideshow .hero-visit {
+  object-position: 50% 47%;
+}
+.hero-slideshow .hero-retail {
+  object-position: 50% 48%;
+}
+.about .about-photo {
+  aspect-ratio: 16 / 9;
+}
+.about .about-visual {
+  padding-right: 0;
+  padding-bottom: 70px;
+}
+.about .experience-note {
+  bottom: 0;
+}
+.projects .project-photo {
+  aspect-ratio: 3 / 4;
+}
+.project-photo-complete .replaceable-photo {
+  object-fit: contain;
+}
+.project-card:hover .project-photo-complete img {
+  transform: none;
+}
+.project-tasting {
+  padding-top: 65px;
+}
+.project-description {
+  color: var(--text-muted);
+  font-size: .95rem;
+  margin-bottom: 20px;
+}
+.project-gallery-single {
+  margin-block: 16px;
+  max-width: 380px;
+}
+.project-gallery-single img,
+.project-gallery img {
+  width: 100%;
+  height: auto;
+}
+.project-gallery-single figcaption,
+.project-gallery figcaption {
+  margin-top: 10px;
+  font-size: .8rem;
+  color: var(--text-muted);
+}
+.projects .project-third {
+  max-width: none;
+  display: grid;
+  grid-template-columns: .8fr 1fr;
+  gap: clamp(24px, 4vw, 60px);
+  align-items: start;
+  padding-top: 35px;
+  border-top: 1px solid var(--border);
+}
+.projects .project-third .project-photo {
+  aspect-ratio: 899 / 1599;
+}
+.project-story .project-heading {
+  margin-top: 0;
+}
+.project-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  gap: 16px;
+  margin-top: 16px;
+}
+@media (max-width: 850px) {
+  .project-tasting {
+    padding-top: 30px;
+  }
+  .projects .project-third {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .project-gallery {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 600px) {
+  .projects .project-third {
+    grid-template-columns: 1fr;
+  }
+  .projects .project-third .project-photo {
+    aspect-ratio: 3 / 4;
+  }
+  .project-gallery {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 480px) {
+  .project-tasting {
+    padding-top: 0;
+  }
+}
