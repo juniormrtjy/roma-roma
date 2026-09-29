@@ -1,0 +1,26 @@
+from PIL import Image, ImageDraw, ImageFont
+from pathlib import Path
+p=Path('assets/images')
+fontpath=Path(r'C:\Windows\Fonts')
+def font(size,bold=False): return ImageFont.truetype(str(fontpath/('segoeuib.ttf' if bold else 'segoeui.ttf')),size)
+# Placeholders gráficos próprios: geometria simples e identidade oficial, sem fotos de terceiros.
+im=Image.new('RGB',(1000,1080),'#172d43'); d=ImageDraw.Draw(im)
+for box in [(-220,-430,1210,950),(-30,-220,1040,820)]: d.ellipse(box,outline='#4b6071',width=2)
+d.text((60,65),'PRESENÇA QUE APROXIMA.',font=font(21),fill='#ffffff')
+logo=Image.open(p/'simbolo-romaneiro-dourado.png').convert('RGBA'); logo.thumbnail((810,760)); im.paste(logo,(335,80),logo)
+d=ImageDraw.Draw(im); d.text((60,695),'Ao vivo.',font=font(108),fill='white'); d.text((60,805),'De verdade.',font=font(108),fill='white'); d.text((660,1010),'R / EXPERIÊNCIAS',font=font(20),fill='white')
+im.save(p/'hero-romaneiro.jpg',quality=88,optimize=True)
+im=Image.new('RGB',(1200,1100),'#d9ded5'); d=ImageDraw.Draw(im)
+for x in range(-200,1700,140): d.line((x,0,x-500,1100),fill='#bac4b6',width=2)
+d.rectangle((85,110,1115,990),outline='#8f9c8b',width=2)
+d.text((140,185),'É SOBRE',font=font(33),fill='#203329')
+for j,t in enumerate(['pessoas,','presença,','conexão.']): d.text((140,295+j*140),t,font=font(112),fill='#203329')
+d.rectangle((140,805,330,815),fill='#ffae00')
+im.save(p/'sobre-romaneiro.jpg',quality=86,optimize=True)
+for i,(color,word,small) in enumerate([('#dedfd3','Presença.','NO PONTO DE VENDA'),('#e7c5af','Experiência.','EM CADA DESCOBERTA'),('#cad8e0','Conexão.','EM CADA DETALHE')],1):
+    im=Image.new('RGB',(1200,900),color); d=ImageDraw.Draw(im)
+    for k in range(4): d.rectangle((470+k*75,-200+k*75,1250+k*75,650+k*75),outline='#ffffff',width=3)
+    d.text((70,65),'R / '+str(i).zfill(2),font=font(25),fill='#283d37')
+    d.text((70,565),word,font=font(100),fill='#283d37'); d.text((75,700),small,font=font(25),fill='#283d37')
+    im.save(p/('projeto-'+str(i).zfill(2)+'.jpg'),quality=85,optimize=True)
+print('Placeholders e logos:',sum(f.stat().st_size for f in p.iterdir()),'bytes')
